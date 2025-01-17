@@ -20,5 +20,44 @@ body{
     cursor: pointer;
 }
 .container{
-    
+    width: 350px;
+    padding:20px;
+    background-color: rgb(235, 235, 235);
+    border-radius: 8px;
+    box-shadow:0px 8px 10px rgb(61, 61, 61);
+}
+.input-container{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border: 2px solid grey;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.cityInput{
+    flex:1;
+    height: 30px;
+    border: none;
+    font-size: 16px;
+    outline: none;
+    padding: 10px;
+}
+.image{
+    height: 160px; 
+    height: 160px;
+}
+
+.weatherImage{
+    text-align: center;
+    height: 150px;
+    margin-bottom: 10px;
+}
+.temp,
+.location,
+.country{
+    margin-top: 5px;
+    font-size: 35px;
+    color: #333;
+    text-transform: uppercase;
+    text-align: center;
 }
