@@ -51,18 +51,6 @@ const WeatherDetails=({icon,temp,city,country,lat,log,humid,wind})=>{
     </>);
   };
 
-
-  WeatherDetails.PropTypes={
-    icon:PropTypes.string.isRequired,
-    temp:PropTypes.number.isRequired,
-    city:PropTypes.string.isRequired,
-    country:PropTypes.string.isRequired,
-    humid:PropTypes.number.isRequired,
-    wind:PropTypes.number.isRequired,
-    lat:PropTypes.number.isRequired,
-    log:PropTypes.number.isRequired,
-};
-
 function App() {
   let api_key="328417d6d22a738328ab1909d4fb8ed8";
 
