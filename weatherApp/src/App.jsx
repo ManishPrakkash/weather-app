@@ -19,6 +19,7 @@ const WeatherDetails=({icon,temp,city,country,lat,log,humid,wind})=>{
      <div className="temp">{temp}°C</div>
      <div className="location">{city}</div>
      <div className="country">{country}</div>
+
      <div className="cord">
         <div>
           <span className="lat">lattitude</span>
@@ -124,6 +125,7 @@ function App() {
   const handleCity =(e)=>{
     setText(e.target.value);
   };
+  
   const handleKeyDown =(e)=>{
     if(e.key ==="Enter"){
       search();
@@ -145,6 +147,7 @@ function App() {
         <div>
           <img className="searchIcon"src={searchIcon} alt="searchicon" onClick={()=>search()}/>
         </div>
+
       </div>
         {!loading && !cityNotFound && <WeatherDetails icon={icon} temp={temp} city={city} country={country} lat={lat} log={log} humid={humid} wind={wind}/>}
         
