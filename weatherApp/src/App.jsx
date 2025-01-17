@@ -22,13 +22,31 @@ const WeatherDetails=({icon,temp,city,country,lat,log})=>{
      <div className="cord">
         <div>
           <span className="lat">lattitude</span>
-          <span>{lat}</span>
+          <span >{lat}</span>
         </div>
         <div>
           <span className="log">longitude</span>
           <span>{log}</span>
         </div>
      </div>
+
+     <div className="data-Container">
+       <div className="element">
+          <img src={humidityIcon} alt="humidity" class="icon"/>
+            <div className="data">
+            <div className="hum-per">75%</div>
+            <div className="text">Humidity</div>
+          </div>
+      </div>
+          <div className="element">
+            <img src={windIcon} alt="humidity" class="icon"/>
+             <div className="data">
+             <div className="wind-per">5 km/hr</div>
+             <div className="text">Wind Speed</div>
+          </div>
+
+      </div>
+      </div>
     </>);
   };
 
