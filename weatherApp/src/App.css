@@ -61,3 +61,16 @@ body{
     text-transform: uppercase;
     text-align: center;
 }
+.temp{
+    font-weight: 500;
+}
+.location{
+    color: rgb(74, 74, 74);
+    font-weight:400;
+    font-size: 40px;
+}
+.country{
+    font-size: 18px;
+    font-weight: 500;
+    color: #888;
+}
