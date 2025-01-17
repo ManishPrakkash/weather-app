@@ -10,7 +10,7 @@ import windIcon from './assets/wind.png'
 import snowIcon from './assets/snow.png'
 import humidityIcon from './assets/humidity.png'
 
-const WeatherDetails=({icon,temp,city,country,lat,log})=>{
+const WeatherDetails=({icon,temp,city,country,lat,log,humid,wind})=>{
     return (
     <>
       <div className="weatherImage">
@@ -34,18 +34,19 @@ const WeatherDetails=({icon,temp,city,country,lat,log})=>{
        <div className="element">
           <img src={humidityIcon} alt="humidity" class="icon"/>
             <div className="data">
-            <div className="hum-per">75%</div>
+            <div className="hum-per">{humid}%</div>
             <div className="text">Humidity</div>
-          </div>
-      </div>
-          <div className="element">
+        </div>
+        </div>
+
+       <div className="element">
             <img src={windIcon} alt="humidity" class="icon"/>
              <div className="data">
-             <div className="wind-per">5 km/hr</div>
+             <div className="wind-per">{wind} km/hr</div>
              <div className="text">Wind Speed</div>
           </div>
 
-      </div>
+         </div>
       </div>
     </>);
   };
@@ -58,6 +59,8 @@ function App() {
   const [country, setCountry] =useState('IN');
   const [lat, setLat] = useState(0);
   const [log, setLog] = useState(0);
+  const [humid, setHumid]= useState(0)
+  const [wind, setWind]= useState(0)
 
   return (
     <>
@@ -68,7 +71,10 @@ function App() {
           <img className="searchIcon"src={searchIcon} alt="searchicon"></img>
         </div>
       </div>
-        <WeatherDetails icon={icon} temp={temp} city={city} country={country} lat={lat} log={log} />
+        <WeatherDetails icon={icon} temp={temp} city={city} country={country} lat={lat} log={log} humid={humid} wind={wind}/>
+        <p className="copyright">Designed by
+          <span> Manishmellow</span>
+        </p>
     </div>
     </>
   )
