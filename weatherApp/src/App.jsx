@@ -55,7 +55,7 @@ const WeatherDetails=({icon,temp,city,country,lat,log,humid,wind})=>{
 function App() {
   let api_key="328417d6d22a738328ab1909d4fb8ed8";
 
-  const [text,setText]= useState("Nagercoil");
+  const [text,setText]= useState('');
 
   const [icon, setIcon] = useState(cloudIcon);
   const [temp, setTemp] = useState(0);
@@ -119,6 +119,7 @@ function App() {
     }
     finally{
       setLoading(false);
+      setError(null);
     }
   };
 
@@ -132,9 +133,16 @@ function App() {
     }
   };
   
-  useEffect(function () {
-    search();
+  useEffect(()=>{
+   const savedText=window.localStorage.getItem('USER_INPUT');
+    if(savedText){ setText(savedText);
+    }
   },[]);
+
+  useEffect( ()=> {
+    window.localStorage.setItem('USER_INPUT',text);
+    search();
+  },[text]);
 
   return (
     <>
