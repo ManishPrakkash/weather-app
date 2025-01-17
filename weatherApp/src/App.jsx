@@ -73,7 +73,22 @@ function App() {
     let url=`https://api.openweathermap.org/data/2.5/weather?q=${text}&appid=${api_key}&units=metric`;
   
     try{
-        
+      let res = await fetch(url);         
+      let data = await res.json();         
+      if(data.cod === "404")           
+        {           
+          console.error('City Not Found');           
+          setCityNotFound(true);           
+          setLoading(false);           
+          return;         
+        }                  
+        setHumid(data.main.humidity);         
+        setWind(data.wind.speed);         
+        setTemp(Math.floor(data.main.temp));         
+        setCity(data.name);         
+        setCountry(data.sys.country);         
+        setLat(data.coord.lat);         
+        setLog(data.coord.lon);
 
     }
     catch(error){
