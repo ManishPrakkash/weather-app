@@ -69,7 +69,6 @@ function App() {
   const [loading, setLoading]= useState(false)
 
   const weatherIconMap = {
-
     "01d": clearIcon,
     "01n": clearIcon,
     "02d": cloudIcon,
@@ -84,7 +83,6 @@ function App() {
     "10n": rainIcon,
     "13d": snowIcon,
     "13n": snowIcon,
-    
     };
 
   const search =async ()=>{
@@ -109,6 +107,9 @@ function App() {
         setLat(data.coord.lat);         
         setLog(data.coord.lon);
 
+        const weatherIconCd=data.weather[0].icon;
+        setIcon(weatherIconCd || clearIcon);
+        cityNotFound(false);
     }
     catch(error){
       console.error('An error occured:',error.message);
