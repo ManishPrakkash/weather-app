@@ -128,11 +128,13 @@ body{
     color: #333;
 }
 .loadingMsg,
-.alertMsg,
+.errorMsg,
 .cityNotFoundMsg
 {
     margin-top:10px;
+    font-size: 25px;
     color: #888;
     font-weight:400;
-    
+    text-align: center;
+
 }

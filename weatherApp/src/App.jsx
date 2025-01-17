@@ -51,6 +51,18 @@ const WeatherDetails=({icon,temp,city,country,lat,log,humid,wind})=>{
     </>);
   };
 
+
+  WeatherDetails.PropTypes={
+    icon:PropTypes.string.isRequired,
+    temp:PropTypes.number.isRequired,
+    city:PropTypes.string.isRequired,
+    country:PropTypes.string.isRequired,
+    humid:PropTypes.number.isRequired,
+    wind:PropTypes.number.isRequired,
+    lat:PropTypes.number.isRequired,
+    log:PropTypes.number.isRequired,
+};
+
 function App() {
   let api_key="328417d6d22a738328ab1909d4fb8ed8";
 
@@ -110,7 +122,7 @@ function App() {
 
         const weatherIconCd=data.weather[0].icon;
         setIcon(weatherIconMap[weatherIconCd] || clearIcon);
-        cityNotFound(false);
+        setCityNotFound(false);
     }
     catch(error){
       console.error('An error occured:',error.message);
@@ -146,11 +158,11 @@ function App() {
           <img className="searchIcon"src={searchIcon} alt="searchicon" onClick={()=>search()}/>
         </div>
       </div>
-        <WeatherDetails icon={icon} temp={temp} city={city} country={country} lat={lat} log={log} humid={humid} wind={wind}/>
+        {!loading && !cityNotFound && <WeatherDetails icon={icon} temp={temp} city={city} country={country} lat={lat} log={log} humid={humid} wind={wind}/>}
         
-        <div className="loadingMsg">Loading...</div> 
-        <div className="alertMsg">{error}</div>
-        <div className="cityNotFoundMsg">City not found</div>
+        {loading && <div className="loadingMsg">Loading...</div>} 
+        {error && <div className="errorMsg">{error}</div>}
+        {cityNotFound && <div className="cityNotFoundMsg">City not found</div>}
 
         
         <p className="copyright">Designed by
