@@ -10,9 +10,35 @@ import windIcon from './assets/wind.png'
 import snowIcon from './assets/snow.png'
 import humidityIcon from './assets/humidity.png'
 
+const WeatherDetails=({icon,temp,city,country,lat,log})=>{
+    return (<>
+      <div className="image">
+        <img src={icon} alt="image" />
+     </div>
+     <div className="temp">{temp}°C</div>
+     <div className="location">{city}</div>
+     <div className="country">{country}</div>
+     <div className="cord">
+        <div>
+          <span className="lat">lattitude</span>
+          <span>{lat}</span>
+        </div>
+        <div>
+          <span className="log">longitude</span>
+          <span>{log}</span>
+        </div>
+     </div>
+    </>);
+  };
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [icon, setIcon] = useState(clearIcon);
+  const [temp, setTemp] = useState(0);
+  const [city, setCity] = useState('Nagercoil');
+  const [country, setCountry] =useState('IN');
+  const [lat, setLat] = useState(0);
+  const [log, setLog] = useState(0);
 
   return (
     <>
@@ -20,9 +46,10 @@ function App() {
       <div className="input-container">
         <input type="text" className="cityInput" placeholder="Search City"></input>
         <div>
-          <img src={searchIcon} alt="searchicon"></img>
+          <img className="searchIcon"src={searchIcon} alt="searchicon"></img>
         </div>
       </div>
+        <WeatherDetails icon={icon} temp={temp} city={city} country={country} lat={lat} log={log} />
     </div>
     </>
   )
