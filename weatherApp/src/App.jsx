@@ -68,6 +68,25 @@ function App() {
   const [cityNotFound, setCityNotFound]=useState(false);
   const [loading, setLoading]= useState(false)
 
+  const weatherIconMap = {
+
+    "01d": clearIcon,
+    "01n": clearIcon,
+    "02d": cloudIcon,
+    "02n": cloudIcon,
+    "03d": drizzleIcon,
+    "03n": drizzleIcon,
+    "04d": drizzleIcon,
+    "04n": drizzleIcon,
+    "09d": rainIcon,
+    "09n": rainIcon,
+    "10d": rainIcon,
+    "10n": rainIcon,
+    "13d": snowIcon,
+    "13n": snowIcon,
+    
+    };
+
   const search =async ()=>{
   setLoading(true);
     let url=`https://api.openweathermap.org/data/2.5/weather?q=${text}&appid=${api_key}&units=metric`;
