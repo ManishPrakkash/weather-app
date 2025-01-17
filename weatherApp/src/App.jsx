@@ -11,9 +11,10 @@ import snowIcon from './assets/snow.png'
 import humidityIcon from './assets/humidity.png'
 
 const WeatherDetails=({icon,temp,city,country,lat,log})=>{
-    return (<>
-      <div className="image">
-        <img src={icon} alt="image" />
+    return (
+    <>
+      <div className="weatherImage">
+        <img className="image" src={icon} alt="image" />
      </div>
      <div className="temp">{temp}°C</div>
      <div className="location">{city}</div>
@@ -33,7 +34,7 @@ const WeatherDetails=({icon,temp,city,country,lat,log})=>{
 
 function App() {
 
-  const [icon, setIcon] = useState(clearIcon);
+  const [icon, setIcon] = useState(cloudIcon);
   const [temp, setTemp] = useState(0);
   const [city, setCity] = useState('Nagercoil');
   const [country, setCountry] =useState('IN');
