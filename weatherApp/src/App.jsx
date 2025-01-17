@@ -147,6 +147,7 @@ function App() {
   return (
     <>
     <div className="container">
+      <div className='title'>WETHER</div>
       <div className="input-container">
 
         <input type="text" className="cityInput" placeholder="Search City" 
