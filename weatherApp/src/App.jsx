@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 
 import searchIcon from './assets/search.png'
@@ -58,15 +58,16 @@ function App() {
 
   const [icon, setIcon] = useState(cloudIcon);
   const [temp, setTemp] = useState(0);
-  const [city, setCity] = useState('Nagercoil');
+  const [city, setCity] = useState('');
   const [country, setCountry] =useState('IN');
   const [lat, setLat] = useState(0);
   const [log, setLog] = useState(0);
-  const [humid, setHumid]= useState(0)
-  const [wind, setWind]= useState(0)
+  const [humid, setHumid]= useState(0);
+  const [wind, setWind]= useState(0);
 
   const [cityNotFound, setCityNotFound]=useState(false);
-  const [loading, setLoading]= useState(false)
+  const [loading, setLoading]= useState(false);
+  const [error, setError] = useState(null);
 
   const weatherIconMap = {
     "01d": clearIcon,
@@ -108,11 +109,12 @@ function App() {
         setLog(data.coord.lon);
 
         const weatherIconCd=data.weather[0].icon;
-        setIcon(weatherIconCd || clearIcon);
+        setIcon(weatherIconMap[weatherIconCd] || clearIcon);
         cityNotFound(false);
     }
     catch(error){
       console.error('An error occured:',error.message);
+      setError('An error occured while fetching weather data.');
     }
     finally{
       setLoading(false);
@@ -127,6 +129,10 @@ function App() {
       search();
     }
   };
+  
+  useEffect(function () {
+    search();
+  },[]);
 
   return (
     <>
@@ -141,6 +147,12 @@ function App() {
         </div>
       </div>
         <WeatherDetails icon={icon} temp={temp} city={city} country={country} lat={lat} log={log} humid={humid} wind={wind}/>
+        
+        <div className="loadingMsg">Loading...</div> 
+        <div className="alertMsg">{error}</div>
+        <div className="cityNotFoundMsg">City not found</div>
+
+        
         <p className="copyright">Designed by
           <span> Manishmellow</span>
         </p>

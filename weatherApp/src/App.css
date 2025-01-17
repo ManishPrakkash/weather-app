@@ -127,3 +127,12 @@ body{
 .copyright span{
     color: #333;
 }
+.loadingMsg,
+.alertMsg,
+.cityNotFoundMsg
+{
+    margin-top:10px;
+    color: #888;
+    font-weight:400;
+    
+}
